@@ -15,11 +15,13 @@ Ship::Ship(int x, int y): pos(x, y)
 
 void Ship::display()
 {
+    // the "AI" code, really not worthy of the name
     if(ai){
         pos.x += 1;
     }
+    
+    // drawing code
     ofSetColor(col);
     ofFill();
     ofCircle(pos.x, pos.y, 20);
-    //std::cout << pos << std::endl;
 }

@@ -1,21 +1,26 @@
 #include "ofApp.h"
 
+// set up the two ships
+// associated the sender with me and the
+// receiver with other (though it is also
+// fum to link them both to the same ship)
 ofApp::ofApp():me(100, 200), other(300, 300), sender(me), receiver(other), gui(10, 10)
 {
+    // GUI input for the ports
     sendPortInput = gui.addTextInput("Send Port:", "11999");
     receivePortInput = gui.addTextInput("Receive Port:", "11998");
+    // set "me" to be autnomously controlled
+    // (doesn't do anything intersting
+    // just moves in one direction
     aiToggle = gui.addToggle("AI", false);
+    
+    // start the network code
     gui.addButton("Start!");
     gui.onButtonEvent(this, &ofApp::onButtonEvent);
 }
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    //parameters.setName("parameters");
-    //parameters.add(myInt.set("myInt",10,1,100));
-    //parameters.add(myString.set("myString","hello"));
-    
-    //gui.setup(parameters);
 
 }
 
@@ -26,13 +31,17 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    //gui.draw();
+    // draw the two ships
     me.display();
     other.display();
 }
 
+// if we press start then we
+// read the ports from the GUI
+// and start the sender and receiver
 void ofApp::onButtonEvent(ofxDatGuiButtonEvent e)
 {
+    
     if (e.target->is("Start!")){
         cout << "Starting" << endl;
         
@@ -43,6 +52,8 @@ void ofApp::onButtonEvent(ofxDatGuiButtonEvent e)
         int receievePort = stoi(receivePortInput->getText());
         receiver.start(receievePort);
         
+        // if we have enabled AI
+        // we also start the AI
         if(aiToggle->getEnabled()){
             me.startAI();
         }

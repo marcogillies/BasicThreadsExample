@@ -28,23 +28,23 @@ public:
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
-		
+	
+    // two ships, one for this
+    // client and one for the remote
+    // client
     Ship me;
     Ship other;
     
+    // the networks sender and receiver
     Sender sender;
     Receiver receiver;
     
+    // this is for the GUI
     ofxDatGui gui;
     ofxDatGuiTextInput* sendPortInput;
     ofxDatGuiTextInput* receivePortInput;
     ofxDatGuiToggle* aiToggle;
     void onButtonEvent(ofxDatGuiButtonEvent e);
     
-    //ofParameter<int> myInt;
-    //ofParameter<string> myString;
-    //ofParameterGroup parameters;
-    
-    //ofxPanel gui;
     
 };

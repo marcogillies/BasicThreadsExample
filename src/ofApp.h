@@ -6,7 +6,7 @@
 #include "Sender.hpp"
 #include "Receiver.hpp"
 
-#include "ofxGui.h"
+#include "ofxDatGui.h"
 
 class ofApp : public ofBaseApp{
 
@@ -35,6 +35,11 @@ public:
     Sender sender;
     Receiver receiver;
     
+    ofxDatGui gui;
+    ofxDatGuiTextInput* sendPortInput;
+    ofxDatGuiTextInput* receivePortInput;
+    ofxDatGuiToggle* aiToggle;
+    void onButtonEvent(ofxDatGuiButtonEvent e);
     
     //ofParameter<int> myInt;
     //ofParameter<string> myString;

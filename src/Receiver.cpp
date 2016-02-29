@@ -11,8 +11,14 @@
 Receiver::Receiver(Ship &s):shipToSet(s)
 {
     
+}
+
+void Receiver::start(int port)
+{
+    std::cout << port << std::endl;
+    
     udpConnection.Create();
-    udpConnection.Bind(11999);
+    udpConnection.Bind(port);
     //udpConnection.SetNonBlocking(true);
     
     
@@ -27,6 +33,12 @@ void Receiver::run()
         char udpMessage[100000];
         udpConnection.Receive(udpMessage,100000);
         string message=udpMessage;
-        std::cout << message << std::endl;;
+        //std::cout << message << std::endl;;
+        istringstream iss(message);
+        float x, y;
+        iss >> x >> y;
+        shipToSet.setPoint(x, y);
+        
+        std::this_thread::sleep_for (std::chrono::milliseconds(300));
     }
 }

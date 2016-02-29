@@ -1,8 +1,12 @@
 #include "ofApp.h"
 
-ofApp::ofApp():me(100, 100), other(300, 300), sender(me), receiver(other)
+ofApp::ofApp():me(100, 200), other(300, 300), sender(me), receiver(other), gui(10, 10)
 {
-    
+    sendPortInput = gui.addTextInput("Send Port:", "11999");
+    receivePortInput = gui.addTextInput("Receive Port:", "11998");
+    aiToggle = gui.addToggle("AI", false);
+    gui.addButton("Start!");
+    gui.onButtonEvent(this, &ofApp::onButtonEvent);
 }
 
 //--------------------------------------------------------------
@@ -25,6 +29,24 @@ void ofApp::draw(){
     //gui.draw();
     me.display();
     other.display();
+}
+
+void ofApp::onButtonEvent(ofxDatGuiButtonEvent e)
+{
+    if (e.target->is("Start!")){
+        cout << "Starting" << endl;
+        
+        int sendPort = stoi(sendPortInput->getText());
+        sender.start("127.0.0.1",sendPort);
+        
+        
+        int receievePort = stoi(receivePortInput->getText());
+        receiver.start(receievePort);
+        
+        if(aiToggle->getEnabled()){
+            me.startAI();
+        }
+    }
 }
 
 //--------------------------------------------------------------

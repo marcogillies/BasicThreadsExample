@@ -25,6 +25,8 @@ public:
     
     Sender(Ship &s);
     
+    void start(string host, int port);
+    
     void run();
 };
 

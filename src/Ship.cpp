@@ -15,7 +15,11 @@ Ship::Ship(int x, int y): pos(x, y)
 
 void Ship::display()
 {
+    if(ai){
+        pos.x += 1;
+    }
     ofSetColor(col);
     ofFill();
     ofCircle(pos.x, pos.y, 20);
+    //std::cout << pos << std::endl;
 }

@@ -25,6 +25,8 @@ public:
     
     Receiver(Ship &s);
     
+    void start(int port);
+    
     void run();
 };
 

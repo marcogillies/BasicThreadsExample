@@ -2,9 +2,17 @@
 
 #include "ofMain.h"
 
+#include "Ship.hpp"
+#include "Sender.hpp"
+#include "Receiver.hpp"
+
+#include "ofxGui.h"
+
 class ofApp : public ofBaseApp{
 
-	public:
+public:
+        ofApp();
+    
 		void setup();
 		void update();
 		void draw();
@@ -21,4 +29,17 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
+    Ship me;
+    Ship other;
+    
+    Sender sender;
+    Receiver receiver;
+    
+    
+    //ofParameter<int> myInt;
+    //ofParameter<string> myString;
+    //ofParameterGroup parameters;
+    
+    //ofxPanel gui;
+    
 };

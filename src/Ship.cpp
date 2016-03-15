@@ -15,6 +15,10 @@ Ship::Ship(int x, int y): pos(x, y)
 
 void Ship::display()
 {
+    // lock the mutex for all operations
+    // that change the position
+    std::lock_guard<std::mutex> guard(mutex);
+    
     // the "AI" code, really not worthy of the name
     if(ai){
         pos.x += 1;

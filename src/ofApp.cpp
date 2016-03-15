@@ -4,7 +4,7 @@
 // associated the sender with me and the
 // receiver with other (though it is also
 // fum to link them both to the same ship)
-ofApp::ofApp():me(100, 200), other(300, 300), sender(me), receiver(other), gui(10, 10)
+ofApp::ofApp():me(100, 200), other(300, 300), sender(me), receiver(me), gui(10, 10)
 {
     // GUI input for the ports
     sendPortInput = gui.addTextInput("Send Port:", "11999");

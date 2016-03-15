@@ -15,6 +15,7 @@ Sender::Sender(Ship &s):shipToSend(s)
     
 }
 
+
 void Sender::start(string host, int port)
 {
     std::cout << host << " " << port << std::endl;
@@ -23,6 +24,7 @@ void Sender::start(string host, int port)
     // the host (network address) and port
     udpConnection.Create();
     udpConnection.Connect(host.c_str(),port);
+    
     // since it is running in its own thread does not need to be nonblocking
     //udpConnection.SetNonBlocking(true);
     

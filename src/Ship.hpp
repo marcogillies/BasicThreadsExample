@@ -41,6 +41,7 @@ public:
         // lock the mutex for all operations
         // that change the position
         std::lock_guard<std::mutex> guard(mutex);
+        
         return pos;
     }
     
@@ -51,8 +52,10 @@ public:
         // lock the mutex for all operations
         // that change the position
         std::lock_guard<std::mutex> guard(mutex);
+        
         pos.set(x,y);
     }
+    
     
     /*
      *  start autonomous "AI" behaviour
@@ -73,24 +76,28 @@ public:
         // lock the mutex for all operations
         // that change the position
         std::lock_guard<std::mutex> guard(mutex);
+        
         pos.y -= speed;
     }
     void down(){
         // lock the mutex for all operations
         // that change the position
         std::lock_guard<std::mutex> guard(mutex);
+        
         pos.y += speed;
     }
     void left(){
         // lock the mutex for all operations
         // that change the position
         std::lock_guard<std::mutex> guard(mutex);
+        
         pos.x -= speed;
     }
     void right(){
         // lock the mutex for all operations
         // that change the position
         std::lock_guard<std::mutex> guard(mutex);
+        
         pos.x += speed;
     }
 };

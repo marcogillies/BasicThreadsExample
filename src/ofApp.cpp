@@ -45,18 +45,25 @@ void ofApp::onButtonEvent(ofxDatGuiButtonEvent e)
     if (e.target->is("Start!")){
         cout << "Starting" << endl;
         
-        int sendPort = stoi(sendPortInput->getText());
-        sender.start("127.0.0.1",sendPort);
-        
-        
-        int receievePort = stoi(receivePortInput->getText());
-        receiver.start(receievePort);
-        
-        // if we have enabled AI
-        // we also start the AI
-        if(aiToggle->getEnabled()){
-            me.startAI();
+        try{
+            int sendPort = stoi(sendPortInput->getText());
+            sender.start("127.0.0.1",sendPort);
+            
+            
+            int receievePort = stoi(receivePortInput->getText());
+            receiver.start(receievePort);
+            
+            
+            // if we have enabled AI
+            // we also start the AI
+            if(aiToggle->getEnabled()){
+                me.startAI();
+            }
+            
+        } catch (std::invalid_argument){
+            ofSystemAlertDialog("please Enter a valid port number");
         }
+        
     }
 }
 
